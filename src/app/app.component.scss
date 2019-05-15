@@ -1,0 +1,26 @@
+// Nav bar rules
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.main-nav-container {
+    margin-left: 25px;
+}
+
+.main-nav-item {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+a {
+    .main-nav-items {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+//Body rules
+.main-container {
+    margin-left: 6px;
+    margin-right: 6px;
+}
