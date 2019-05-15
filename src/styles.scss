@@ -1,0 +1,111 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$back-gray: #f1f1f1;
+$darker-gray: #dfdfdf;
+$white: #fff;
+$black: #000;
+$light-primary: #b748e2;
+$primary: #673ab7;
+
+label {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+label + p {
+    margin-top: 1px;
+    padding-left: 3px;
+}
+
+#main-html-body {
+    background-color: $back-gray;
+}
+
+.mat-expansion-panel-header{
+    background-color: $primary !important;
+        
+    mat-panel-title {
+        color: $white;
+    }
+
+    &.mat-expansion-indicator::after {
+        color: $white;
+    }
+
+    &.comments {
+        background-color: $darker-gray !important;
+        mat-panel-title {
+            color: $black;
+        }
+    }
+}
+
+.mat-expansion-panel {
+    background-color: $back-gray;
+}
+
+.mat-flat-button.mat-primary:hover {
+    background-color: $light-primary;
+}
+
+.mat-raised-button.mat-primary:hover {
+    background-color: $light-primary;
+}
+
+.mat-tab-group {
+    margin-top: 8px;
+}
+
+.mat-tab-label {
+    border-right: 1px dotted $primary !important;
+    background-color: $darker-gray !important;
+    color: $black !important;
+    font-weight: bold;
+}
+
+.tabbed-content {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin-top: 5px !important;
+
+}
+
+.mat-divider {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+}
+
+
+a {
+    &.no-underline {
+        text-decoration: none;
+    }
+
+    &:visited {
+        color: blue;
+    }
+}
+
+
+$spacing-directions: top bottom left right;
+$spacing-values: -27 -13 -12 -10 -9 0 4 5 6 7 8 10 12 15 17 20 24 25 30 40 60;
+
+// margin rules
+@each $direction in $spacing-directions {
+	@each $value in $spacing-values {
+		$margin: if($value < 0, "margin-negative","margin-");
+		.#{$direction}-#{$margin}#{$value}{
+			margin-#{$direction}: #{$value}px !important;
+		}
+	}
+}
+
+// padding rules
+@each $direction in $spacing-directions {
+	@each $value in $spacing-values {
+		$margin: if($value < 0, "padding-negative","padding-");
+		.#{$direction}-#{$margin}#{$value}{
+			padding-#{$direction}: #{$value}px !important;
+		}
+	}
+}
