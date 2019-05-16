@@ -13,7 +13,7 @@ export class TicketService {
  
   private serverData = JSON;
   private ticketData = JSON;
-  private ticketesUrl = 'http://127.0.0.1:5002/ticket';  // URL to web api
+  private ticketsUrl = 'http://127.0.0.1:5002';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -21,10 +21,20 @@ export class TicketService {
  
   /** GET ticket by id. Will 404 if id not found */
   getTicket(id: number): Observable<Ticket> {
-    const url = `${this.ticketesUrl}/${id}`;
+    const url = `${this.ticketsUrl}/ticket/${id}`;
     return this.http.get<Ticket>(url).pipe(
-      tap(_ => this.log(`fetched ticket id=${id}`)),
+      // tap(_ => this.log(`fetched ticket id=${id}`)),
       catchError(this.handleError<Ticket>(`getTicket id=${id}`))
+    );
+  }
+
+  /**get all tickets matching some filter */
+  getTickets(filter: string): Observable<Ticket[]> {
+    const params = {'filter': filter};
+    const url = `${this.ticketsUrl}/tickets`;
+    return this.http.post<Ticket[]>(url, params).pipe(
+      // tap(_ => this.log(`fetched tickes`)),
+      catchError(this.handleError<Ticket[]>('getTickets', []))
     );
   }
 

@@ -13,6 +13,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { ProjectComponent } from './project/project.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MessagesComponent,
     ProjectComponent,
     TicketComponent,
-    DashboardComponent
+    DashboardComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,
