@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Ticket } from '../models/ticket';
+import { TicketService } from '../services/ticket.service';
 
 @Component({
   selector: 'app-ticket',
@@ -7,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketComponent implements OnInit {
 
+  ticket: Ticket;
+  error;
   ticket_states = ['Backlog', 'Development', 'Code Review', 'Testing', 'Released', 'On Hold', 'Closed'];
   progress_estimated = 100;
   progress_logged = 66;
@@ -30,9 +36,18 @@ export class TicketComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private ticket_service: TicketService) { }
 
   ngOnInit() {
+    this.getTicket();
+  }
+
+  getTicket() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.ticket_service.getTicket(id).subscribe(
+      (data: Ticket) => this.ticket = data['ticket'] || {},
+      error => this.error = error
+    );
   }
 
 }
